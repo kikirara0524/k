@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}お問い合わせ | Private Diary{% endblock %}
+
+{# base.htmlのリンクのclassにactiveを追加 #}
+{% block active_inquiry %}active{% endblock %}
+
+{% block contents %}
+<div class="container">
+    <div class="my-div-style">
+        <form method="post">
+            {# ↓formを書く時に必ず必要になる #}
+            {% csrf_token %}
+
+            {# 入力内容全体にかかわるエラー #}
+            {{ form.non_field_errors }}
+
+            {{ form.as_p }}
+
+            <button class="btn btn-primary" type="submit">送信</button>
+        </form>
+    </div>
+</div>
+{% endblock %}
